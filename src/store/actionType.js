@@ -1,2 +1,9 @@
-export const ADD_QUANTITY="ADD_QUANTITY";
-export const CART_ARRAY="CART_ARRAY";
+export const DISPLAY_DATA="DISPLAY_DATA";
+export const ADD_TO_CART_ARRAY="ADD_TO_CART_ARRAY";
+export const IN_QUANTITY="IN_QUANTITY";
+export const OUT_QUANTITY="OUT_QUANTITY";
+export const PLACE_ORDER="PLACE_ORDER";
+export const DISPLAY_ORDER="DISPLAY_ORDER";
+export const ADD_TO_PRODUCT_DATA="ADD_TO_PRODUCT_DATA";
+
+

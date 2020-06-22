@@ -1,4 +1,4 @@
-[
+let data=[
     {
        "id": 1,
        "name": "Buzz",
@@ -3270,3 +3270,5 @@
        "contributed_by": "Sam Mason <samjbmason>"
     }
  ]
+
+ export default data;

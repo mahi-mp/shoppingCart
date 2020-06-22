@@ -20,7 +20,7 @@ class Navbar extends Component{
                         <Link className="nav-link" to="/cart">Cart </Link>
                     </li>
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/addproducts">Addproducts </Link>
+                        <Link className="nav-link" to="/products">Addproducts </Link>
                     </li>
                     <li className="nav-item active">
                         <Link className="nav-link" to="/orders">Orders </Link>

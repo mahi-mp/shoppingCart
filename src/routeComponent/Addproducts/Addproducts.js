@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addQuantity, addProduct } from "../../store/action";
+import SingleItem from '../../components/singleItem';
+import { Link } from 'react-router-dom';
 
 class Addproducts extends Component{
     constructor(props){
@@ -8,41 +12,35 @@ class Addproducts extends Component{
         }
     }
 
-    componentDidMount(){
-        fetch(" https://api.punkapi.com/v2/beers")
-        .then((response)=>response.json())
-        .then((response)=>{
-            this.setState({
-                data:response
-            });
-        })
-    }
-
     render(){
-        console.log("in propduct",this.props)
+        const {productData}=this.props
         return(
-            <div className="container">
-                <div className="d-flex justify-content-center">
-                    <h5 className="card-title">Beer List</h5>
-                </div>
+            <div className="container mt-5">
+                {/* <div className="my-5">
+                    <Link><label className="btn btn-outline-success">Add ProductData</label></Link>
+                    <Link><label className="btn btn-outline-success">Edit Product</label></Link>
+                </div> */}
                 <table className="table table-striped table-dark">
                     <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">List</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Discription</th>
+                            <th scope="col">Price</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {
-                            this.state.data && this.state.data.map((ele,index)=>{
+                            productData && productData.map((ele,index)=>{
                                 return(
                                     <tr key={index}>
-                                        <th scope="row">{ele.id}</th>
+                                        <th scope="row"><Link to={`/products/${ele.id}`} >{ele.id} </Link></th>
                                         <td>{ele.name}</td>
-                                        <td><img src={ele.image_url} width='100' height='100' alt={ele.name}/></td>
+                                        <td><img src={ele.image_url} height='100' className="img-fluid" alt={ele.name}/></td>
                                         <td>{ele.description}</td>
+                                        <td>{ele.ibu}</td>
+                                        {/* <td><button onClick={()=>this.props.ADD_TO_CART_ARRAY(ele.id)} className="btn btn-outline-warning">Add Item</button></td> */}
                                     </tr>
                                 )
                             })
@@ -54,4 +52,9 @@ class Addproducts extends Component{
     }
 }
 
-export default Addproducts;
+const mapStateToProps=state=>{
+    return{
+        productData:state.productData,
+    }
+}
+export default connect(mapStateToProps,null)(Addproducts);
